@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   stack.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/29 15:46:46 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/29 19:03:28 by youngcho         ###   ########.fr       */
+/*   Created: 2022/08/29 16:31:07 by youngcho          #+#    #+#             */
+/*   Updated: 2022/08/29 19:03:57 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing_argument.h"
+#ifndef STACK_H
+# define STACK_H
 
-#include <stdio.h>
-int	main(int argc, char *argv[])
-{
-	t_argv	argv_int;
+typedef struct s_stack	t_stack;
+struct s_stack {
+	int		value;
+	t_stack	*top;
+	t_stack	*next;
+	t_stack	*prev;
+	t_stack	*bottom;
+};
 
-	printf("argc: %d\n", argc);
-	// check argument
-	parsing_argument(&argv_int, argc, argv);
-	for(int i = 0; i < argv_int.len; i++)
-		printf("%d ", argv_int.argv[i]);
-	printf("\n");
-	// make stack
-	// merge sort
-	return (0);
-}
+t_stack	*create_node(void);
+
+#endif
