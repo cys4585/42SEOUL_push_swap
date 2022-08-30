@@ -6,7 +6,7 @@
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 17:00:22 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/30 14:30:30 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/08/30 17:01:55 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,6 @@ void	parsing_argument(t_argv *argv_int, int argc, char *argv[])
 		parsing_case_string(argv_int, argv);
 	else
 		parsing_case_array(argv_int, argc, argv);
+	if (is_already_sorted(argv_int))
+		exit(EXIT_SUCCESS);
 }

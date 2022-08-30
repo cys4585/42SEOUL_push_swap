@@ -6,7 +6,7 @@
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 17:00:39 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/30 14:30:50 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/08/30 17:02:12 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ typedef struct s_argv
 
 int	is_number(char *str);
 int	is_unique(int argv[], int idx);
+int	is_already_sorted(t_argv *argv_int);
 
 #endif
