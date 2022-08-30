@@ -6,7 +6,7 @@
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 14:56:42 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/30 16:18:07 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/08/30 16:44:16 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	swap(t_stack *stack)
 	t_node	*second_node;
 	t_node	*third_node;
 
+	if (stack->top == stack->bottom)
+		return ;
 	top_node = stack->top;
 	second_node = top_node->prev;
 	third_node = second_node->prev;
@@ -28,7 +30,8 @@ void	swap(t_stack *stack)
 	top_node->prev = third_node;
 	second_node->next = NULL;
 	second_node->prev = top_node;
-	third_node->next = top_node;
+	if (third_node)
+		third_node->next = top_node;
 }
 
 void	push(t_stack *stack, int data)
@@ -74,6 +77,8 @@ void	rotate(t_stack *stack)
 	t_node	*new_top;
 	t_node	*new_bottom;
 
+	if (stack->top == stack->bottom)
+		return ;
 	old_top = stack->top;
 	old_bottom = stack->bottom;
 	new_top = old_top->prev;
@@ -93,6 +98,8 @@ void	reverse_rotate(t_stack *stack)
 	t_node	*new_top;
 	t_node	*new_bottom;
 
+	if (stack->top == stack->bottom)
+		return ;
 	old_top = stack->top;
 	old_bottom = stack->bottom;
 	new_top = old_bottom;
