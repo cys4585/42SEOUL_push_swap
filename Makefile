@@ -6,7 +6,7 @@
 #    By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/29 15:45:33 by youngcho          #+#    #+#              #
-#    Updated: 2022/08/29 18:39:46 by youngcho         ###   ########.fr        #
+#    Updated: 2022/08/30 14:31:34 by youngcho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ OBJS_DIR = objs/
 SRCS_NAME = push_swap.c \
 			error.c \
 			stack.c \
-			parsing_argument.c
+			parsing_argument.c \
+			parsing_argument_utils.c
 OBJS_NAME = $(SRCS_NAME:.c=.o)
 
 SRCS = $(addprefix $(SRCS_DIR), $(SRCS_NAME))

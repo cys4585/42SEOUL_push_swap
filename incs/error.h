@@ -6,7 +6,7 @@
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 16:36:45 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/30 12:25:12 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/08/30 14:18:24 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,5 @@ typedef enum e_error {
 
 void	custom_check_error(t_error err, char *str, int ret);
 void	check_error(t_error err, char *str, void *ret);
+
 #endif

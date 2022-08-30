@@ -6,7 +6,7 @@
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 17:00:39 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/29 18:55:21 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/08/30 14:30:50 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ typedef struct s_argv
 	int	len;
 }	t_argv;
 
-void	parsing_argument(t_argv *argv_int, int argc, char *argv[]);
+int	is_number(char *str);
+int	is_unique(int argv[], int idx);
 
 #endif
