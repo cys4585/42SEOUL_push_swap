@@ -6,7 +6,7 @@
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 16:06:20 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/30 14:40:18 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/08/30 15:22:23 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,6 @@
 #include "parsing_argument.h"
 #include "error.h"
 #include <stdlib.h>
-
-void	push(t_stack *stack, int value)
-{
-	t_node	*new_node;
-	t_node	*old_top;
-
-	old_top = stack->top;
-	new_node = (t_node *)malloc(sizeof(t_node));
-	check_error(MALLOC, "push", new_node);
-	new_node->data = value;
-	new_node->next = NULL;
-	new_node->prev = old_top;
-	stack->top = new_node;
-	if (old_top)
-		old_top->next = new_node;
-	else
-		stack->bottom = new_node;
-}
 
 static t_stack	*create_stack(void)
 {

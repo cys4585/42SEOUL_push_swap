@@ -6,14 +6,14 @@
 #    By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/29 15:45:33 by youngcho          #+#    #+#              #
-#    Updated: 2022/08/30 14:31:34 by youngcho         ###   ########.fr        #
+#    Updated: 2022/08/30 15:24:16 by youngcho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 LIBFT_DIR = libft/
 LIBFT_NAME = libft.a
@@ -29,6 +29,7 @@ OBJS_DIR = objs/
 SRCS_NAME = push_swap.c \
 			error.c \
 			stack.c \
+			stack_utils.c \
 			parsing_argument.c \
 			parsing_argument_utils.c
 OBJS_NAME = $(SRCS_NAME:.c=.o)
