@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.h                                            :+:      :+:    :+:   */
+/*   ft_strarr_len.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/29 16:36:45 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/30 12:25:12 by youngcho         ###   ########.fr       */
+/*   Created: 2022/08/30 12:01:00 by youngcho          #+#    #+#             */
+/*   Updated: 2022/08/30 12:27:08 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_H
-# define ERROR_H
+#include "libft.h"
 
-typedef enum e_error {
-	MALLOC,
-	CUS_ARG
-}	t_error;
+int	ft_strarr_len(char *strarr[])
+{
+	int	i;
 
-void	custom_check_error(t_error err, char *str, int ret);
-void	check_error(t_error err, char *str, void *ret);
-#endif
+	i = 0;
+	while (strarr[i])
+		i++;
+	return (i);
+}

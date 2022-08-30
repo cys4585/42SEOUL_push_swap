@@ -6,7 +6,7 @@
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 17:00:22 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/29 19:01:56 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/08/30 12:24:12 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,21 @@
 #include "error.h"
 #include <stdlib.h>
 
-// argc > 2
-// [push_swap, "19", "2", "30", "1", ...]
-// or
-// argc == 2
-// [push_swap, "19 2 30 1 ..."]
-static	int	strarr_len(char *strarr[])
+static int	is_number(char *str)
 {
 	int	i;
 
-	i = 0;
-	while (strarr[i])
+	if (str[0] == '-' || str[0] == '+')
+		i = 1;
+	else
+		i = 0;
+	while (str[i])
+	{
+		if (!('0' <= str[i] && str[i]<= '9'))
+			return (0);
 		i++;
-	return (i);
+	}
+	return (1);
 }
 
 static void	strarr_to_intarr(t_argv *argv_int, int len, char *strarr[])
@@ -40,6 +42,7 @@ static void	strarr_to_intarr(t_argv *argv_int, int len, char *strarr[])
 	i = 0;
 	while (strarr[i])
 	{
+		custom_check_error(CUS_ARG, "Error", is_number(strarr[i]));
 		argv_int->argv[i] = ft_atoi(strarr[i]);
 		i++;
 	}
@@ -51,7 +54,7 @@ static void	parsing_case_string(t_argv *argv_int, char *argv[])
 	int		len;
 
 	arg_arr = ft_split(argv[1], ' ');
-	len = strarr_len(arg_arr);
+	len = ft_strarr_len(arg_arr);
 	if (len == 1)
 	{
 		ft_array_free(arg_arr);
