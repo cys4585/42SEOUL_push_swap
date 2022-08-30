@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.h                                            :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/29 16:31:07 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/30 18:53:30 by youngcho         ###   ########.fr       */
+/*   Created: 2022/05/02 14:18:02 by youngcho          #+#    #+#             */
+/*   Updated: 2022/08/30 18:31:16 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STACK_H
-# define STACK_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-typedef struct s_node {
-	struct s_node	*next;
-	int				data;
-	struct s_node	*prev;
-}	t_node;
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
-typedef struct s_stack {
-	t_node	*top;
-	t_node	*bottom;
-}	t_stack;
+typedef struct s_list
+{
+	int				fd;
+	char			*str;
+	char			*backup_str;
+	struct s_list	*prev;
+	struct s_list	*next;
+}	t_list;
+
+char	*get_next_line(int fd);
 
 #endif

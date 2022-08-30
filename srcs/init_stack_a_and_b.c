@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   init_stack_a_and_b.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 16:06:20 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/30 15:22:23 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/08/30 18:59:02 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
+#include "stack_utils.h"
 #include "parsing_argument.h"
 #include "error.h"
 #include <stdlib.h>

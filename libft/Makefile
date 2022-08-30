@@ -6,7 +6,7 @@
 #    By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/01 17:37:39 by youngcho          #+#    #+#              #
-#    Updated: 2022/08/30 12:26:24 by youngcho         ###   ########.fr        #
+#    Updated: 2022/08/30 18:28:18 by youngcho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,9 @@ SRCS_NAME = ft_atoi.c \
 	   ft_substr.c \
 	   ft_tolower.c \
 	   ft_toupper.c \
-	   ft_strarr_len.c
+	   ft_strarr_len.c \
+	   get_next_line.c \
+	   get_next_line_utils.c
 
 BON_SRCS_NAME = ft_lstnew.c \
 		   ft_lstadd_front.c \

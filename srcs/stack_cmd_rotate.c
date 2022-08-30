@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.h                                            :+:      :+:    :+:   */
+/*   stack_cmd_rotate.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/29 16:31:07 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/30 18:53:30 by youngcho         ###   ########.fr       */
+/*   Created: 2022/08/30 18:48:39 by youngcho          #+#    #+#             */
+/*   Updated: 2022/08/30 18:56:16 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STACK_H
-# define STACK_H
+#include "stack_utils.h"
 
-typedef struct s_node {
-	struct s_node	*next;
-	int				data;
-	struct s_node	*prev;
-}	t_node;
+void	ra(t_stack *a)
+{
+	rotate(a);
+}
 
-typedef struct s_stack {
-	t_node	*top;
-	t_node	*bottom;
-}	t_stack;
+void	rb(t_stack *b)
+{
+	rotate(b);
+}
 
-#endif
+void	rr(t_stack *a, t_stack *b)
+{
+	rotate(a);
+	rotate(b);
+}
