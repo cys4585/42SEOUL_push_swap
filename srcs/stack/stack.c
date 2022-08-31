@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_stack_a_and_b.c                               :+:      :+:    :+:   */
+/*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 16:06:20 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/30 18:59:02 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/08/31 14:59:09 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,40 @@ static t_stack	*create_stack(void)
 	return (stack);
 }
 
-void	init_stack_a_and_b(t_stack **a, t_stack **b, t_argv *argv_int)
+static void	free_all_node(t_stack *stack)
 {
-	*a = create_stack();
-	*b = create_stack();
-	while (argv_int->len--)
-		push(*a, argv_int->argv[argv_int->len]);
+	t_node *node;
+	t_node *next;
+
+	node = stack->bottom;
+	next = node->next;
+	while (node)
+	{
+		free(node);
+		node = next;
+		if (node)
+			next = node->next;
+	}
+}
+
+void	init_stack_a_and_b(t_stack **a_p, t_stack **b_p, t_argv *argv_int)
+{
+	int	i;
+	
+	*a_p = create_stack();
+	*b_p = create_stack();
+	i = 0;
+	while (i < argv_int->len)
+		push(*a_p, argv_int->argv[argv_int->len - i++]);
 	free(argv_int->argv);
+}
+
+void	destroy_stack_a_and_b(t_stack *a, t_stack *b)
+{
+	if (a->bottom)
+		free_all_node(a);
+	if (b->bottom)
+		free_all_node(b);
+	free(a);
+	free(b);
 }

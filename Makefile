@@ -6,7 +6,7 @@
 #    By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/29 15:45:33 by youngcho          #+#    #+#              #
-#    Updated: 2022/08/31 11:58:04 by youngcho         ###   ########.fr        #
+#    Updated: 2022/08/31 14:44:29 by youngcho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,25 +26,30 @@ INCS_FLAGS = -I $(INCS_DIR) -I $(LIBFT_DIR)incs/
 SRCS_DIR = srcs/
 OBJS_DIR = objs/
 
-SRCS_NAME = push_swap.c
 
 SRCS_ERROR_DIR = error/
 SRCS_ERROR_NAME = error.c
-SRCS_NAME += $(addprefix $(SRCS_ERROR_DIR), $(SRCS_ERROR_NAME))
 
 SRCS_PARSING_DIR = parsing/
 SRCS_PARSING_NAME = parsing_argument.c \
 					parsing_argument_utils.c
-SRCS_NAME += $(addprefix $(SRCS_PARSING_DIR), $(SRCS_PARSING_NAME))
 
 SRCS_STACK_DIR = stack/
-SRCS_STACK_NAME = init_stack_a_and_b.c \
-					stack_cmd_push.c \
-					stack_cmd_swap.c \
-					stack_cmd_rotate.c \
-					stack_cmd_reverse_rotate.c \
-					stack_utils.c
+SRCS_STACK_NAME = stack.c \
+				stack_cmd_push.c \
+				stack_cmd_swap.c \
+				stack_cmd_rotate.c \
+				stack_cmd_reverse_rotate.c \
+				stack_utils.c
+
+SRCS_SORT_DIR = sort/
+SRCS_SORT_NAME = sort.c
+
+SRCS_NAME = push_swap.c
+SRCS_NAME += $(addprefix $(SRCS_ERROR_DIR), $(SRCS_ERROR_NAME))
+SRCS_NAME += $(addprefix $(SRCS_PARSING_DIR), $(SRCS_PARSING_NAME))
 SRCS_NAME += $(addprefix $(SRCS_STACK_DIR), $(SRCS_STACK_NAME))
+SRCS_NAME += $(addprefix $(SRCS_SORT_DIR), $(SRCS_SORT_NAME))
 
 OBJS_NAME = $(SRCS_NAME:.c=.o)
 
@@ -76,3 +81,4 @@ $(OBJS_DIR) :
 	mkdir $(OBJS_DIR)$(SRCS_ERROR_DIR)
 	mkdir $(OBJS_DIR)$(SRCS_PARSING_DIR)
 	mkdir $(OBJS_DIR)$(SRCS_STACK_DIR)
+	mkdir $(OBJS_DIR)$(SRCS_SORT_DIR)

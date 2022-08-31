@@ -6,7 +6,7 @@
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 14:21:41 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/30 17:02:18 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/08/31 12:12:00 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	is_already_sorted(t_argv *argv_int)
 	int	i;
 
 	i = 0;
-	while(i < argv_int->len - 1)
+	while (i < argv_int->len - 1)
 	{
 		if (argv_int->argv[i] > argv_int->argv[i + 1])
 			return (0);

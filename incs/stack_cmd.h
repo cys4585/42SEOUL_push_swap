@@ -6,7 +6,7 @@
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 18:54:19 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/30 18:56:14 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/08/31 13:51:25 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	sa(t_stack *a);
 void	sb(t_stack *b);
 void	ss(t_stack *a, t_stack *b);
 
-void	pa(t_stack *a);
-void	pb(t_stack *b);
+void	pa(t_stack *a, t_stack *b);
+void	pb(t_stack *b, t_stack *a);
 
 void	ra(t_stack *a);
 void	rb(t_stack *b);

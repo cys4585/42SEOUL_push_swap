@@ -6,7 +6,7 @@
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 14:56:42 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/30 18:45:01 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/08/31 14:22:09 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ void	swap(t_stack *stack)
 	second_node->prev = top_node;
 	if (third_node)
 		third_node->next = top_node;
+	else
+		stack->bottom = top_node;
+	
 }
 
 void	push(t_stack *stack, int data)

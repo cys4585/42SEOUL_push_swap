@@ -6,7 +6,7 @@
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 16:36:35 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/30 17:00:09 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/08/31 12:15:32 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ static void	custom_exit_with_stderr(char *str)
 	exit(EXIT_FAILURE);
 }
 
-void	custom_check_error(t_error err, char *str, int ret)
-{
-	if (err == CUS_ARG && ret == 0)
-		custom_exit_with_stderr(str);
-}
-
 void	check_error(t_error err, char *str, void *ret)
 {
 	if (err == MALLOC && ret == NULL)
 		exit_with_perror(str);
+}
+
+void	custom_check_error(t_error err, char *str, int ret)
+{
+	if (err == CUS_ARG && ret == 0)
+		custom_exit_with_stderr(str);
 }

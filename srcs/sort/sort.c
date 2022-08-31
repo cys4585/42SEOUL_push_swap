@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/29 15:46:46 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/31 14:59:18 by youngcho         ###   ########.fr       */
+/*   Created: 2022/08/31 13:37:53 by youngcho          #+#    #+#             */
+/*   Updated: 2022/08/31 14:03:51 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "stack.h"
+#include "stack_cmd.h"
 
-int	main(int argc, char *argv[])
+void	sort(t_stack *a, t_stack *b, int n)
 {
-	t_argv	argv_int;
-	t_stack	*a;
-	t_stack	*b;
-
-	parsing_argument(&argv_int, argc, argv);
-	init_stack_a_and_b(&a, &b, &argv_int);
-	// 일단 10개 미만의 수 정렬 만들어보자
-	sort(a, b, argv_int.len);
-	destroy_stack_a_and_b(a, b);
-	return (0);
+	int size;
+	
+	if (n == 2)
+		sa(a);
+	else
+	{
+		size = n % 3;
+		size = b->top->data;
+	}
 }
