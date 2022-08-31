@@ -6,7 +6,7 @@
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 18:47:27 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/31 13:57:17 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/08/31 15:14:24 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	pa(t_stack *a, t_stack *b)
 
 }
 
-void	pb(t_stack *b, t_stack *a)
+void	pb(t_stack *a, t_stack *b)
 {
 	if (a->top == NULL)
 		return ;
