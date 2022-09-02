@@ -6,7 +6,7 @@
 #    By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/29 15:45:33 by youngcho          #+#    #+#              #
-#    Updated: 2022/08/31 14:44:29 by youngcho         ###   ########.fr        #
+#    Updated: 2022/09/02 19:31:49 by youngcho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,10 @@ SRCS_STACK_NAME = stack.c \
 				stack_utils.c
 
 SRCS_SORT_DIR = sort/
-SRCS_SORT_NAME = sort.c
+SRCS_SORT_NAME = sort.c \
+				sort_6.c \
+				create_goal.c \
+				first_sort.c
 
 SRCS_NAME = push_swap.c
 SRCS_NAME += $(addprefix $(SRCS_ERROR_DIR), $(SRCS_ERROR_NAME))

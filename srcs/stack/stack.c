@@ -6,7 +6,7 @@
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 16:06:20 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/31 15:38:13 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/09/02 12:24:16 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ static t_stack	*create_stack(void)
 
 static void	free_all_node(t_stack *stack)
 {
-	t_node *node;
-	t_node *next;
+	t_node	*node;
+	t_node	*next;
 
 	node = stack->bottom;
 	next = node->next;
@@ -43,24 +43,39 @@ static void	free_all_node(t_stack *stack)
 	}
 }
 
-void	init_stack_a_and_b(t_stack **a_p, t_stack **b_p, t_argv *argv_int)
+void	init_stack_a_and_b(t_stack_info *stack_info, t_argv *argv_int)
 {
 	int	i;
-	
-	*a_p = create_stack();
-	*b_p = create_stack();
+
+	stack_info->a = create_stack();
+	stack_info->b = create_stack();
 	i = 0;
 	while (i < argv_int->len)
-		push(*a_p, argv_int->argv[argv_int->len - 1 - i++]);
+		push(stack_info->a, argv_int->argv[argv_int->len - 1 - i++]);
 	free(argv_int->argv);
 }
 
-void	destroy_stack_a_and_b(t_stack *a, t_stack *b)
+void	destroy_stack_a_and_b(t_stack_info *stack_info)
 {
-	if (a->bottom)
-		free_all_node(a);
-	if (b->bottom)
-		free_all_node(b);
-	free(a);
-	free(b);
+	if (stack_info->a->bottom)
+		free_all_node(stack_info->a);
+	if (stack_info->b->bottom)
+		free_all_node(stack_info->b);
+	free(stack_info->a);
+	free(stack_info->b);
+}
+
+int	count_stack_size(t_stack *stack)
+{
+	t_node	*node;
+	int		cnt;
+
+	node = stack->top;
+	cnt = 0;
+	while (node)
+	{
+		cnt++;
+		node = node->prev;
+	}
+	return (cnt);
 }

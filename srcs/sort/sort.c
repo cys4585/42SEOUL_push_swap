@@ -6,104 +6,131 @@
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 13:37:53 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/31 15:57:50 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/09/02 19:48:38 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
 #include "stack_cmd.h"
+#include "sort.h"
+#include "libft.h"
+#include "error.h"
+#include <stdlib.h>
 
-void	set_size(int size[], int n)
+#include <stdio.h>
+void	print_stack(t_stack_info *stack_info)
 {
-	int	quotient;
-	int	remainder;
-	quotient = n / 3;
-	remainder = n % 3;
-	size[0] = quotient + remainder;
-	if (remainder == 1)
-		size[1] = quotient;
-	else
-		size[1] = quotient + remainder;
-	size[2] = quotient;
-}
+	t_node *node;
 
-void	divide(t_stack *a, t_stack *b, int cnt)
-{
-	while (cnt--)
-		pb(a, b);
-	// sort();
-}
-
-t_node	*find_max(t_stack *a, t_stack *b, int size[])
-{
-	t_node	*max_node;
-	int		i;
-
-
-	i = 0;
-	while (i < 3)
+	printf("A: %p | B: %p\n", stack_info->a, stack_info->b);
+	node = stack_info->a->top;
+	printf("Stack A\n	");
+	while (node)
 	{
-		if (size[i])
-			break ;
+		printf("%d ", node->data);
+		node = node->prev;
+	}
+	printf("\n");
+	printf("Stack B\n	");
+	node = stack_info->b->top;
+	while (node)
+	{
+		printf("%d ", node->data);
+		node = node->prev;
+	}
+	printf("\n");
+}
+
+void	print_goal(t_goal *goal, t_stack_info * stack_info)
+{
+	if (goal->target == stack_info->a)
+		printf("target:(A) %p | temp:(B) %p\n", goal->target, goal->temp);
+	else
+		printf("target:(B) %p | temp:(A) %p\n", goal->target, goal->temp);
+	printf("cnt: %d\n", goal->cnt);
+	int i = 0;
+	printf("size: ");
+	while (i < goal->cnt)
+	{
+		printf("%d ", goal->size[i]);
 		i++;
 	}
-	if (i == 0)
+	printf("\n");
+	i = 0;
+	printf("order: ");
+	while (i < goal->cnt)
 	{
-		max_node = a->bottom;
-		if (max_node->data < b->top->data)
-			max_node = b->top;
-		if (max_node->data < b->bottom->data)
-			max_node = b->bottom;
-	}
-	else if (i == 1)
-		if (b->top->data < b->bottom->data)
-			max_node = b->bottom;
+		if (goal->order[i] == ASC)
+			printf("ASC ");
 		else
-			max_node = b->top;
-	else
-		max_node = b->bottom;
-	return max_node;
+			printf("DESC ");
+		i++;
+	}
+	printf("\n############################################\n\n");
 }
 
-void	merge(t_stack *a, t_stack *b, int size[])
+void	destroy_goal(t_goal *goal)
 {
-	t_node	*max_node;
-	int		loop_cnt;
+	free(goal->size);
+	free(goal->order);
+	free(goal);
+}
 
-	loop_cnt = size[0] + size[1] + size[2];
-	while (loop_cnt--)
+void	ready_to_merge(t_stack_info *stack_info, t_goal *goal)
+{
+	int	size;
+	int	i;
+
+	i = 0;
+	while (i < goal->cnt / 3)
 	{
-		max_node = find_max(a, b, size);
-		if (max_node == a->bottom)
-		{
-			size[0]--;
-			rra(a);
-		}
-		else if (max_node == b->top)
-		{
-			size[1]--;
-			pa(a, b);
-		}
-		else
-		{
-			size[2]--;
-			rrb(b);
-			pa(a, b);
-		}
+		size = goal->size[goal->cnt - 1 - i];
+		while (size--)
+			p_target(stack_info, goal->temp);
+		i++;
 	}
 }
 
-void	merge_sort(t_stack *a, t_stack *b, int n)
+void	merge(t_stack_info *stack_info, t_goal *curr_goal)
 {
-	int size[3];
+	
+}
 
-	if (n == 2)
-		sa(a);
+void	divide_and_sort_and_merge(t_stack_info *stack_info, t_goal *curr_goal)
+{
+	t_goal	*child_goal;
+
+	if (curr_goal->size[0] <= 3)
+		first_sort(stack_info, curr_goal);
 	else
 	{
-		set_size(size, n);
-		divide(a, b, size[2]);
-		divide(a, b, size[1]);
-		merge(a, b, size);
+		child_goal = create_child_goal(curr_goal);
+		
+		print_goal(child_goal, stack_info);
+
+		divide_and_sort_and_merge(stack_info, child_goal);
+		
+		ready_to_merge(stack_info, child_goal);
+		merge(stack_info, curr_goal);
+		
+		print_stack(stack_info);
+		print_goal(curr_goal, stack_info);
+		
+		destroy_goal(child_goal);
 	}
+}
+
+void	sort(t_stack_info *stack_info, int n)
+{
+	t_goal *final_goal;
+
+	// print_stack(stack_info);
+	if (n <= 6)
+		sort_6(stack_info, n);
+	final_goal = create_final_goal(stack_info, n);
+	printf("\nA: %p | B: %p\n", stack_info->a, stack_info->b);
+	print_goal(final_goal, stack_info);
+	divide_and_sort_and_merge(stack_info, final_goal);
+	// print_stack(stack_info);
+	destroy_goal(final_goal);
 }
