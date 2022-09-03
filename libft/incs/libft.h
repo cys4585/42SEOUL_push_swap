@@ -6,7 +6,7 @@
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 17:03:14 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/30 12:26:07 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/09/02 13:48:05 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 int		ft_strarr_len(char *strarr[]);
+int		ft_intarr_len(int *intarr[]);
 
 typedef struct s_list
 {

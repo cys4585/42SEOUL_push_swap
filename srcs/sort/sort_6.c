@@ -6,7 +6,7 @@
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 11:43:13 by youngcho          #+#    #+#             */
-/*   Updated: 2022/09/02 13:41:10 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/09/03 15:12:49 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,12 @@ static void	sort_456(t_stack_info *stack_info, t_goal goal)
 	int	i;
 
 	i = 0;
-	while (i++ < goal.size[0] - 3)
+	while (i++ < goal.sizes[0] - 3)
 		pb(stack_info);
 	sort_3(stack_info, goal.target, ASC);
-	if (goal.size[0] - 3 == 3)
+	if (goal.sizes[0] - 3 == 3)
 		sort_3(stack_info, goal.temp, DESC);
-	else if (goal.size[0] - 3 == 2)
+	else if (goal.sizes[0] - 3 == 2)
 		sort_2(stack_info, goal.temp, DESC);
 	merge(stack_info, goal);
 }
@@ -97,9 +97,9 @@ void	sort_6(t_stack_info *stack_info, int n)
 
 	final_goal.target = stack_info->a;
 	final_goal.temp = stack_info->b;
-	final_goal.size = malloc(sizeof(int) * 1);
-	check_error(MALLOC, "sort", final_goal.size);
-	final_goal.size[0] = n;
+	final_goal.sizes = malloc(sizeof(int) * 1);
+	check_error(MALLOC, "sort", final_goal.sizes);
+	final_goal.sizes[0] = n;
 	final_goal.cnt = 1;
 	if (n == 2)
 		sort_2(stack_info, stack_info->a, ASC);
@@ -107,5 +107,5 @@ void	sort_6(t_stack_info *stack_info, int n)
 		sort_3(stack_info, stack_info->a, ASC);
 	else if (4 <= n && n <= 6)
 		sort_456(stack_info, final_goal);
-	free(final_goal.size);
+	free(final_goal.sizes);
 }

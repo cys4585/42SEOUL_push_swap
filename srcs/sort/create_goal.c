@@ -6,7 +6,7 @@
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 15:44:38 by youngcho          #+#    #+#             */
-/*   Updated: 2022/09/02 18:15:52 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/09/03 15:12:49 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,15 @@ static void	compute_goal_size(t_goal *parent_goal, t_goal *goal)
 		j = 0;
 		while (j < 3)
 		{
-			goal->size[i * 3 + j] = parent_goal->size[i] / 3;
+			goal->sizes[i * 3 + j] = parent_goal->sizes[i] / 3;
 			j++;
 		}
-		remainder = parent_goal->size[i] % 3;
+		remainder = parent_goal->sizes[i] % 3;
 		if (remainder)
 		{
-			goal->size[i * 3]++;
+			goal->sizes[i * 3]++;
 			if (remainder == 2)
-				goal->size[i * 3 + 1]++;
+				goal->sizes[i * 3 + 1]++;
 		}
 		i++;
 	}
@@ -74,9 +74,9 @@ static void	compute_goal_order(t_goal *parent_goal, t_goal *goal)
 	while (i < 3)
 	{
 		if (i == 0)
-			insert_order(goal->order + (i * len), parent_goal->order, len, 1);
+			insert_order(goal->orders + (i * len), parent_goal->orders, len, 1);
 		else
-			insert_order(goal->order + (i * len), parent_goal->order, len, 0);
+			insert_order(goal->orders + (i * len), parent_goal->orders, len, 0);
 		i++;
 	}
 }
@@ -90,11 +90,11 @@ t_goal	*create_child_goal(t_goal *parent_goal)
 	goal->target = parent_goal->temp;
 	goal->temp = parent_goal->target;
 	goal->cnt = parent_goal->cnt * 3;
-	goal->size = malloc(sizeof(int) * goal->cnt);
-	check_error(MALLOC, "set_goal", goal->size);
+	goal->sizes = malloc(sizeof(int) * goal->cnt);
+	check_error(MALLOC, "set_goal", goal->sizes);
 	compute_goal_size(parent_goal, goal);
-	goal->order = malloc(sizeof(t_order) * goal->cnt);
-	check_error(MALLOC, "set_goal", goal->order);
+	goal->orders = malloc(sizeof(t_order) * goal->cnt);
+	check_error(MALLOC, "set_goal", goal->orders);
 	compute_goal_order(parent_goal, goal);
 	return (goal);
 }
@@ -107,12 +107,12 @@ t_goal	*create_final_goal(t_stack_info *stack_info, int n)
 	check_error(MALLOC, "set_goal", goal);
 	goal->target = stack_info->a;
 	goal->temp = stack_info->b;
-	goal->size = malloc(sizeof(int) * 1);
-	check_error(MALLOC, "set_goal", goal->size);
-	goal->size[0] = n;
+	goal->sizes = malloc(sizeof(int) * 1);
+	check_error(MALLOC, "set_goal", goal->sizes);
+	goal->sizes[0] = n;
 	goal->cnt = 1;
-	goal->order = malloc(sizeof(t_order) * 1);
-	check_error(MALLOC, "set_goal", goal->order);
-	goal->order[0] = ASC;
+	goal->orders = malloc(sizeof(t_order) * 1);
+	check_error(MALLOC, "set_goal", goal->orders);
+	goal->orders[0] = ASC;
 	return (goal);
 }

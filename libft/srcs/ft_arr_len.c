@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strarr_len.c                                    :+:      :+:    :+:   */
+/*   ft_arr_len.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 12:01:00 by youngcho          #+#    #+#             */
-/*   Updated: 2022/08/30 12:32:21 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/09/02 13:48:08 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,16 @@ int	ft_strarr_len(char *strarr[])
 
 	i = 0;
 	while (strarr[i])
+		i++;
+	return (i);
+}
+
+int	ft_intarr_len(int *intarr[])
+{
+	int	i;
+
+	i = 0;
+	while (intarr[i])
 		i++;
 	return (i);
 }

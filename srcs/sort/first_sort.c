@@ -6,7 +6,7 @@
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 19:29:57 by youngcho          #+#    #+#             */
-/*   Updated: 2022/09/02 19:34:10 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/09/03 15:12:49 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	ready_for_first_sort(t_stack_info *stack_info, t_goal *goal)
 	size = 0;
 	i = 0;
 	while (i < goal->cnt)
-		size += goal->size[i++];
+		size += goal->sizes[i++];
 	while (size--)
 		pb(stack_info);
 }
@@ -111,11 +111,11 @@ void	first_sort(t_stack_info *stack_info, t_goal *goal)
 	ready_for_first_sort(stack_info, goal);
 	while (i < goal->cnt)
 	{
-		size = goal->size[i];
+		size = goal->sizes[i];
 		if (size == 3)
-			move_3(stack_info, goal, goal->order[i]);
+			move_3(stack_info, goal, goal->orders[i]);
 		else if (size == 2)
-			move_2(stack_info, goal, goal->order[i]);
+			move_2(stack_info, goal, goal->orders[i]);
 		else
 			p_target(stack_info, goal->target);
 		i++;

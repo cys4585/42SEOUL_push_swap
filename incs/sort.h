@@ -6,7 +6,7 @@
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 13:38:12 by youngcho          #+#    #+#             */
-/*   Updated: 2022/09/02 19:49:31 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/09/03 15:12:49 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ typedef struct s_goal {
 	t_stack	*target;
 	t_stack	*temp;
 	int		cnt;
-	int		*size;
-	t_order	*order;
+	int		*sizes;
+	t_order	*orders;
 }	t_goal;
 
 typedef struct s_count {
