@@ -6,7 +6,7 @@
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 13:38:12 by youngcho          #+#    #+#             */
-/*   Updated: 2022/09/03 15:12:49 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/09/03 16:56:22 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,7 @@ void	sort_6(t_stack_info *stack_info, int n);
 t_goal	*create_final_goal(t_stack_info *stack_info, int n);
 t_goal	*create_child_goal(t_goal *parent_goal);
 void	first_sort(t_stack_info *stack_info, t_goal *goal);
+void	move_one(t_stack_info *stack_info, t_goal *goal, \
+					int child_sizes[], int idx);
 
 #endif
