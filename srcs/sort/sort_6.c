@@ -6,7 +6,7 @@
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 11:43:13 by youngcho          #+#    #+#             */
-/*   Updated: 2022/09/03 15:12:49 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/10/15 15:10:43 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,32 +15,6 @@
 #include "stack_cmd.h"
 #include "error.h"
 #include <stdlib.h>
-
-static void	merge(t_stack_info *stack_info, t_goal goal)
-{
-	int	target_size;
-	int	temp_size;
-	int	i;
-
-	target_size = count_stack_size(goal.target);
-	temp_size = count_stack_size(goal.temp);
-	i = target_size + temp_size;
-	while (i--)
-	{
-		if (temp_size == 0 || \
-			(target_size && goal.target->bottom->data > goal.temp->top->data))
-		{
-			rr_target(stack_info, goal.target);
-			target_size--;
-		}
-		else if (target_size == 0 || \
-			(temp_size && goal.target->bottom->data < goal.temp->top->data))
-		{
-			p_target(stack_info, goal.target);
-			temp_size--;
-		}
-	}
-}
 
 static void	sort_2(t_stack_info *stack_info, t_stack *target, t_order order)
 {
@@ -73,6 +47,32 @@ static void	sort_3(t_stack_info *stack_info, t_stack *target, t_order order)
 			rr_target(stack_info, target);
 		if (target->top->data < target->top->prev->data)
 			s_target(stack_info, target);
+	}
+}
+
+static void	merge(t_stack_info *stack_info, t_goal goal)
+{
+	int	target_size;
+	int	temp_size;
+	int	i;
+
+	target_size = count_stack_size(goal.target);
+	temp_size = count_stack_size(goal.temp);
+	i = target_size + temp_size;
+	while (i--)
+	{
+		if (temp_size == 0 || \
+			(target_size && goal.target->bottom->data > goal.temp->top->data))
+		{
+			rr_target(stack_info, goal.target);
+			target_size--;
+		}
+		else if (target_size == 0 || \
+			(temp_size && goal.target->bottom->data < goal.temp->top->data))
+		{
+			p_target(stack_info, goal.target);
+			temp_size--;
+		}
 	}
 }
 
