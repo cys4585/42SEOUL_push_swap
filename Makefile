@@ -6,14 +6,14 @@
 #    By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/29 15:45:33 by youngcho          #+#    #+#              #
-#    Updated: 2022/09/03 16:54:48 by youngcho         ###   ########.fr        #
+#    Updated: 2022/10/15 15:34:15 by youngcho         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 
 LIBFT_DIR = libft/
 LIBFT_NAME = libft.a
