@@ -6,7 +6,7 @@
 /*   By: youngcho <youngcho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 13:37:53 by youngcho          #+#    #+#             */
-/*   Updated: 2022/10/15 15:06:26 by youngcho         ###   ########.fr       */
+/*   Updated: 2022/10/17 18:02:29 by youngcho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,8 @@ void	sort(t_stack_info *stack_info, int n)
 
 	if (n <= 6)
 		sort_6(stack_info, n);
-	else {
+	else
+	{
 		final_goal = create_final_goal(stack_info, n);
 		divide_and_sort_and_merge(stack_info, final_goal);
 		destroy_goal(final_goal);
